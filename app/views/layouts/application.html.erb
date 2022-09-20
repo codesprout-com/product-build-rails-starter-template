@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TITLE</title>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "main", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
+    <%= favicon_link_tag asset_path('favicon.ico') %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <div class="container">
+      <% unless Rails.env.production? %>
+        <div class="notification is-warning is-light">
+          This is the <%= Rails.env %> environment
+        </div>
+      <% end %>
+
+      <% if notice %>
+        <div class="notification is-success is-light has-text-centered is-size-5">
+          <strong>
+            <%= notice %>
+          </strong>
+        </div>
+      <% elsif alert %>
+        <div class="notification is-danger is-light has-text-centered is-size-5">
+          <strong>
+            <%= alert %>
+          </strong>
+        </div>
+      <% end %>
+
+      <%= render "shared/navbar" %>
+
+      <div class="content">
+        <%= yield %>
+      </div>
+    </div>
+
+    <footer class="footer mt-5">
+      <div class="content has-text-centered">
+        <p class="pb-2">
+        FOOTER TEXT GOES HERE
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

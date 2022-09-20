@@ -1,0 +1,33 @@
+<div class="columns">
+  <div class="column is-three-fifths is-offset-one-fifth">
+    <div class="pb-5"></div>
+    <div class="box mx-5">
+      <div class="block">
+        <div class="columns is-mobile is-centered pb-3">
+          <p class="subtitle is-2">Change your password</p>
+        </div>
+      </div>
+
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field">
+          <%= f.label :password, "New password", class: "label" %>
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+          <% end %>
+          <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "input" %>
+        </div>
+      
+        <div class="columns is-mobile is-centered p-6">
+          <div class="field is-grouped actions">
+            <%= f.submit "Change password", class: "button plum-button" %>
+          </div>
+        </div>
+
+        <%= f.hidden_field :reset_password_token %>
+      <% end %>
+
+    </div>
+  </div>
+</div>

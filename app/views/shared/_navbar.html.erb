@@ -1,0 +1,39 @@
+<nav class="navbar" role="navigation" aria-label="main navigation" data-controller="menu">
+  <div class="navbar-brand">
+    <h2 class="subtitle is-2">
+      <pre>Image or Logo</pre>
+    </h2>
+
+    <a role="button" class="navbar-burger" data-action="click->menu#toggle" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div data-menu-target="navbar" class="navbar-menu">
+    <div class="navbar-start">
+
+      <% if current_user %>
+        <pre>logged in menu links</pre>
+      <% else %>
+        <pre>logged out menu links</pre>
+      <% end %>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <% if current_user %>
+          <div class="buttons">
+            <%= button_to "Log out", destroy_user_session_url, class: "button is-light", method: :delete %>
+          </div>
+        <% else %>
+          <div class="buttons">
+            <%= link_to "Sign up", new_user_registration_path, class: "button" %>
+            <%= link_to "Log in", new_user_session_path, class: "button is-light" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</nav>

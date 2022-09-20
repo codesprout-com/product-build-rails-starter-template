@@ -1,0 +1,40 @@
+<div class="columns">
+  <div class="column is-three-fifths is-offset-one-fifth">
+    <div class="pb-5"></div>
+    <div class="box mx-5">
+      <div class="block">
+        <div class="columns is-mobile is-centered pb-3">
+          <p class="subtitle is-2">Reset your password</p>
+        </div>
+
+        <div class="columns is-mobile is-centered pb-3">
+          It happens to the best of us
+        </div>
+
+        <div class="columns is-mobile is-centered pb-3">
+          Did you remember it? 👇
+        </div>
+
+        <div class="columns is-mobile is-centered">
+          <strong><%= link_to "Click here to sign in", new_session_path(resource_name), class: "purple-a" %></strong>
+        </div>
+      </div>
+
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field">
+          <%= f.label :email, class: "label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input", placeholder: "youremail@example.com" %>
+        </div>
+
+        <div class="columns is-mobile is-centered p-6">
+          <div class="field is-grouped actions">
+            <%= f.submit "📧 Send reset email", class: "button plum-button" %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

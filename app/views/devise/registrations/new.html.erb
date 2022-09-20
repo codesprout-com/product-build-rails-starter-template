@@ -1,0 +1,45 @@
+<div class="columns">
+  <div class="column is-three-fifths is-offset-one-fifth">
+    <div class="pb-5"></div>
+    <div class="box mx-5">
+      <div class="block pb-5">
+        <div class="columns is-mobile is-centered pb-3">
+          <p class="subtitle is-2">Sign up</p>
+        </div>
+
+        <div class="columns is-mobile is-centered pb-3">
+          Already have an account?&nbsp; <strong><%= link_to "Log in here", new_session_path(resource_name), class: "purple-a" %></strong>
+        </div>
+      </div>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field pb-4">
+          <%= f.label :email, "What's your email address? (you'll use this to log in)", class: "label" %>
+          <div class="control">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input", placeholder: "youremail@example.com" %>
+          </div>
+        </div>
+
+        <div class="field pb-4">
+          <%= f.label :password, "Choose a password", class: "label" %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+          <div class="control">
+            <%= f.password_field :password, autocomplete: "new-password", class: "input", placeholder: "****************" %>
+          </div>
+        </div>
+
+        <div class="columns is-mobile is-centered p-6">
+          <div class="field is-grouped actions">
+            <div class="control">
+              <%= f.submit "✍️ Sign up", class: "button plum-button" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
